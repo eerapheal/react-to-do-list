@@ -5,7 +5,8 @@ import TodosList from "./TodosList"
 import { v4 as uuidv4 } from "uuid"
 // eslint-disable-next-line
 import { Route, Switch } from "react-router-dom"
-
+import About from "./pages/About"
+import NotMatch from "./pages/NotMatch"
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([])
@@ -68,10 +69,12 @@ const TodoContainer = () => {
     localStorage.setItem("todos", temp)
   }, [todos])
   return (
-    <Route exact path="/">
+    <>
       <div className="container">
         <div className="inner">
           <Header />
+          <About />
+          <NotMatch />
           <InputTodo addTodoProps={addTodoItem} />
           <TodosList
             todos={todos}
@@ -81,7 +84,7 @@ const TodoContainer = () => {
           />
         </div>
       </div>
-    </Route>
+      </>
   )
 }
 
