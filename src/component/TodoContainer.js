@@ -6,24 +6,8 @@ import TodosList from "./TodosList";
 import InputTodo from "./InputTodo"
 class TodoContainer extends React.Component {
   state = {
-    todos: [
-      {
-        id: 1,
-        title: "Setup development environment",
-        completed: true
-      },
-      {
-        id: 2,
-        title: "Develop website and add content",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Deploy to live server",
-        completed: false
-      }
-    ]
-   };
+    todos: [],
+  };
    handleChange = (id) => {
     this.setState(prevState => ({
       todos: prevState.todos.map(todo => {
@@ -75,6 +59,11 @@ class TodoContainer extends React.Component {
     if (event.key === "Enter") {
       this.setState({ editing: false })
     }
+  }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then(response => response.json())
+      .then(data => this.setState({ todos: data }));
   }
   render() {
     const viewMode = {}
