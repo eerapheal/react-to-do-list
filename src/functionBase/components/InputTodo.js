@@ -35,9 +35,19 @@ const InputTodo = props => {
         name="title"
         onChange={onChange}
       />
-      <button className="input-submit">
-        <FaPlusCircle style={{ color: "darkcyan", fontSize: "20px", marginTop: "2px" }} />
-      </button>
+      <IconContext.Provider
+  value={{
+    color: "darkcyan",
+    style: { fontSize: "20px", color: "#ff0000" },
+    className: "submit-iconn",
+  }}
+>
+  <button className="input-submit">
+    <FaPlusCircle />
+    <FaPlusCircle />
+    <FaPlusCircle />
+  </button>
+</IconContext.Provider>
     </form>
   )
 }
