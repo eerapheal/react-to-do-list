@@ -1,4 +1,5 @@
 import React from "react"
+// eslint-disable-next-line
 import TodoItem from "./TodoItem";
 
 class TodosList extends React.Component {
@@ -6,7 +7,11 @@ class TodosList extends React.Component {
     return (
       <ul>
         {this.props.todos.map(todo => (
-         <TodoItem key={todo.id} todo={todo} />
+         <TodoItem
+         key={todo.id}
+         todo={todo}
+         handleChangeProps={this.props.handleChangeProps}
+       />
         ))}
       </ul>
     )
