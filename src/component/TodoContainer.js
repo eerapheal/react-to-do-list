@@ -56,7 +56,35 @@ class TodoContainer extends React.Component {
     todos: [...this.state.todos, newTodo]
   });
   };
+  handleEditing = () => {
+    this.setState({
+      editing: true,
+    })
+  }
+  setUpdate = (updatedTitle, id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.title = updatedTitle
+        }
+        return todo
+      }),
+    })
+  }
+  handleUpdatedDone = event => {
+    if (event.key === "Enter") {
+      this.setState({ editing: false })
+    }
+  }
   render() {
+    const viewMode = {}
+const editMode = {}
+
+if (this.state.editing) {
+  viewMode.display = "none"
+} else {
+  editMode.display = "none"
+}
     return (
       <div className="container">
         <div className="inner">
@@ -66,6 +94,7 @@ class TodoContainer extends React.Component {
             todos={this.state.todos}
             handleChangeProps={this.handleChange}
             deleteTodoProps={this.delTodo}
+            setUpdate={this.setUpdate}
           />
         </div>
       </div>
