@@ -5,6 +5,11 @@ import TodoContainer from "./component/TodoContainer"
 //stylesheet
 import "./component/App.css"
 
+import TodoContainer from "./functionBased/components/TodoContainer"
+
+//stylesheet
+import "./functionBased/components/App.css"
+
 ReactDOM.render(
   <React.StrictMode>
     <TodoContainer />
