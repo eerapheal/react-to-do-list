@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 
 class InputTodo extends Component {
+    
   state = {
     title: "",
   }
@@ -9,9 +10,10 @@ class InputTodo extends Component {
       [e.target.name]: e.target.value,
     })
   }
+
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.title);
+    this.props.addTodoProps(this.state.title);
   };
   render() {
     return (
